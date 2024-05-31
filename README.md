@@ -39,4 +39,9 @@ LoveCat 프로젝트 폴더를 압축하고 제출 방법 확인하여 제출해
     - 카멜 케이스(camelCase)란 첫 단어를 소문자로 시작하고, 이후의 각 단어의 첫 글자는 대문자로 표기하는 방법을 의미합니다.    
     각 단어 사이에 공백이나 언더바(_)를 사용하지 않습니다.    
     - 예시 : `teamSparta` , `iLoveYou`     
-  
+
+## 완성
+![image](https://github.com/chihyeonwon/LoveCat/assets/58906858/86e3ed66-e465-4914-ba50-c6884f58a574)
+```
+걸린시간 5분.
+```
