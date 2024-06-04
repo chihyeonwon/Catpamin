@@ -10,6 +10,7 @@
         tools:context=".MainActivity">
 
         <TextView
+            android:fontFamily="@font/mainstyle"
             android:id="@+id/cat_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -125,11 +126,13 @@
         </LinearLayout>
 
         <Button
+            android:fontFamily="@font/boardtext"
+            android:background="@drawable/catbutton_background"
             android:id="@+id/cat_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Button"
+            android:text="고양이 사진 받기"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
