@@ -46,10 +46,11 @@ LoveCat 프로젝트 폴더를 압축하고 제출 방법 확인하여 제출해
 걸린시간 5분.
 ```
   
-## 숙제 시작하기 - 지난 숙제인 LoveCat 프로젝트에 고양이 서버 연결을 위해 환경을 준비해 보아요.     
-🐈고양이 사진을 제공하는 “https://thecatapi.com/”의 고양이 사진을 직접 연동해 볼게요!      
+## 2주차 숙제 시작하기 
+#### 1. 지난 숙제인 LoveCat 프로젝트에 고양이 서버 연결을 위해 환경을 준비해 보아요.     
+🐈고양이 사진을 제공하는 “https://thecatapi.com/”의 고양이 사진을 직접 연동해 볼게요!          
      
-Android Studio의 Recent에서 LoveCat 프로젝트를 다시 열어보아요.      
+Android Studio의 Recent에서 LoveCat 프로젝트를 다시 열어보아요.         
 서버 연결을 위해선 Retrofit 라이브러리가 필요해요. build.gradle.kts(Moule:app) 파일에 Retrofit 라이브러리를 추가해 보아요. 혹시 잊어버리신 분은 아래 2주차 강의 자료 링크를 참고해 보세요.     
 
 ## 📕2주차 강의 자료 소통하는 서비스, Retrofit의 힘! - 2주차     
@@ -58,7 +59,7 @@ API를 생성해 보아요. https://thecatapi.com/에 접속해서 “Get Your A
 ![image](https://github.com/chihyeonwon/LoveCat/assets/58906858/268bac32-6113-4f16-a219-6567b19814d1)
 
 ## 숙제 요구 사항
-2. Cat API와 연동하기     
+#### 2. Cat API와 연동하기     
 RetrofitInstance.kt와 CatService.kt를 만들어주세요.    
 RetrofitInstance.kt      
 BASE_URL을 "https://api.thecatapi.com/" 로 설정해 주세요.     
@@ -80,9 +81,42 @@ data 폴더를 만들어 Json to Kotlin 플러그인을 활용해 CatModel.kt을
 ]
 ```
 
+#### 3. 서버에서 새로운 고양이 그림을 받아올 버튼 연결하기
+activity_main.xml에 Button을 추가해 주세요.       
+- id : “cat_button”     
+- MainActivity.kt의 onCreate 함수 마지막에 cat_button의 setOnClickListener를 추가해 주세요.    
+- setOnClickListener 안에 Retrofit을 통해 Image를 받아오도록 아래 굵은 코드를 추가해 주세요      
+```kotlin
+binding.catButton.setOnClickListener {
+     lifecycleScope.launch {
+         RetrofitInstance.service.getImages(num = 4)
+     }
+}
+```
 
+#### 이미지 연결을 위한 Glide 세팅, 사용법   
+🐈 Glide : 이후 수업에서 다룹니다.       
+Glide는 안드로이드에서 이미지를 빠르고 효율적으로 불러올 수 있게 도와주는 라이브러리로 사용 방법도 간단하고,      
+확장성도 넓어서 이미 메이저하게 사용되고 있는 라이브러리입니다.     
 
+서버에서 받아온 result를 ImageView에 연결하기 위해 Glide 라이브러리를 build.gradle.kts(Moule:app) 마지막에 추가해 주세요.    
+```kotlin
+implementation("com.github.bumptech.glide:glide:4.14.0")
+annotationProcessor("com.github.bumptech.glide:compiler:4.14.0")
+```
 
+Glide를 활용해 result에 있는 이미지를 ImageView에 연결해 보세요.
+```kotlin
+    Glide.with(this@MainActivity).load(result[0].url).into(binding.ivAlbum1)
+    Glide.with(this@MainActivity).load(result[1].url).into(binding.ivAlbum2)
+    Glide.with(this@MainActivity).load(result[2].url).into(binding.ivAlbum3)
+    Glide.with(this@MainActivity).load(result[3].url).into(binding.ivAlbum4)
+```
+[선택] 좀 더 자연스러운 사용자 UI 제공을 위해 Glide에 withCrossFade 옵션을 추가해 보세요. 
+```kotlin
+Glide.with(this@MainActivity).load(result[0].url)
+                        .transition(withCrossFade()).into(binding.ivAlbum1)
+```
 
 
 
