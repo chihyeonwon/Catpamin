@@ -1,4 +1,6 @@
-## 고양이 앨범을 꾸며 보아요.🐱‍👤   
+## 고양이 앨범을 꾸며 보아요.🐱‍👤 
+![2024-06-03 19;37;54](https://github.com/chihyeonwon/LoveCat/assets/58906858/50f95a1e-4703-4cdf-9df3-b844a9ed07ce)
+
 TextView 설정은 결과물 예시를 참고하여 설정해 주세요.     
 Size : 30sp   
 Style : Bold     
@@ -117,6 +119,8 @@ Glide를 활용해 result에 있는 이미지를 ImageView에 연결해 보세�
 Glide.with(this@MainActivity).load(result[0].url)
                         .transition(withCrossFade()).into(binding.ivAlbum1)
 ```
+## 서버에서 이미지 데이터 가져오는 고양이 앨범
+![2024-06-03 19;37;54](https://github.com/chihyeonwon/LoveCat/assets/58906858/2ce45eb8-ac5f-406b-af79-64db281184f4)
 
 
 
