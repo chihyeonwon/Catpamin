@@ -1,3 +1,6 @@
+## 1,2주차
+![image](https://github.com/chihyeonwon/LoveCat/assets/58906858/33638f46-36f2-4808-8e2c-a7b54d01389a)
+
 ## 고양이 앨범을 꾸며 보아요.🐱‍👤 
 ![2024-06-04 17;41;00](https://github.com/chihyeonwon/LoveCat/assets/58906858/5f44242f-9a8a-49c6-b105-064a77a687df)
 
