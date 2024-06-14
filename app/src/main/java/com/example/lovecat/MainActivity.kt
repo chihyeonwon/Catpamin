@@ -3,6 +3,7 @@ package com.example.lovecat
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade
 import com.example.lovecat.api.RetrofitInstance
@@ -29,12 +30,14 @@ class MainActivity : AppCompatActivity() {
 
             catButton.setOnClickListener {
 
-                CoroutineScope(Dispatchers.Main).launch {
+                lifecycleScope.launch {
                     runCatching {
-                        // 10개의 고양이 사진 정보를 받아와 result 변수에 저장
+                        // 10개의 고양이 사진 정보를 받아와 result 변수에 저장(Dispachers.IO에서 작업을 수행할 수 있도록 withContext를 활용)
                         val result =
                             withContext(Dispatchers.IO) { RetrofitInstance.service.getImages(num = 10) }
 
+                        // adapter에 submitList를 이용해 result 변수에 저장된 이미지 리스트를 적용
+                        itemAdapter.submitList(result)
 
                         Toast.makeText(
                             this@MainActivity, "새로운 고양이 사진을 가져옵니다", Toast.LENGTH_SHORT
