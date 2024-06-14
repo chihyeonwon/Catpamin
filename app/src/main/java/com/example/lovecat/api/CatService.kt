@@ -9,6 +9,6 @@ private const val API_KEY = "live_T1y69jct42szkFWSvdKLq1ltrBvZbG2VpivVDGM7JXfmVm
 interface CatService {
     @GET("v1/images/search?api_key=$API_KEY")
     suspend fun getImages(
-        @Query("limit") num: Int = 1
+        @Query("limit") num: Int = 1 // default = 1
     ): CatModel
 }
