@@ -190,7 +190,7 @@ class CatItemAdapter : ListAdapter<CatModelItem, CatItemAdapter.CatViewHolder>(o
 - Image를 서버에서 받아올 때 코루틴의 Dispachers.IO에서 작업을 수행할 수 있도록 withContext를 활용해 보세요.
 - 서버에서 받아온 이미지 리스트를 adapter의 submitList를 활용해 itemAdapter에 적용해 주세요.
 
-
+참고자료 [DiffUtil, ListAdpater.submitList()](https://velog.io/@l2hyunwoo/Android-RecyclerView-DiffUtil-ListAdapter)
 
 
 
