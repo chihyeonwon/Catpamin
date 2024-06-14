@@ -125,11 +125,72 @@ Glide.with(this@MainActivity).load(result[0].url)
 ## 서버에서 이미지 데이터 가져오는 고양이 앨범
 ![2024-06-04 17;41;00](https://github.com/chihyeonwon/LoveCat/assets/58906858/0b995ac0-e878-4c0e-baae-47cd81a5da9b)
 
+## 4주차 문제
+고양이 리스트 보여주기
 
+[지시사항]
+#### 1. 숙제 시작하기 - 한번에 많은 고양이 사진을 서버로부터 받아 오세요.    
+- 지난 번 숙제 열기 : Android Studio의 Recent에서 LoveCat 프로젝트를 다시 열어보아요.      
+- catButton 클릭시, CatService.kt의 getImages 함수 안의 num 인자를 변경하여 한번에 “10”개의 고양이 사진 정보를 받아와 result 변수에 저장하세요.     
+![image](https://github.com/chihyeonwon/LoveCat/assets/58906858/e3895d82-3c0c-4c13-9a64-ed1078d532c8)
+      
+숙제 요구 사항      
+#### 2. 10마리의 고양이 사진을 리스트로 화면에 출력해 주세요.       
+- activity_main.xml의 기존 4개의 고양이 앨범 ImageView를 삭제하세요.      
+- 기존의 고양이 앨범 TextView와 Button은 알맞은 위치로 이동해 주세요.      
+- 나머지 적절한 공간에 RecyclerView를 추가해 보아요      
+- id는 “list”로 지으세요.    
+- 넓이를 가득 채우게 설정해 주세요.      
+- app:layoutManager를 “androidx.recyclerview.widget.GridLayoutManager”로 설정해 주세요.     
+- app:spanCount(가로에 보일 아이템의 갯수)를 “2”로 변경해 주세요.     
+        
+#### 3. RecyclerView와 Adapter를 연결해 주세요.      
+- 이제 RecyclerView와 고양이 10마리를 이어줄 CatItemAdapter.kt 파일을 만들어 주세요.      
+- ListAdapter의 골격이 되는 하단 코드를 CatItemAdapter.kt에 추가해 주세요. (빨간 줄은 Alt+Enter로 import 하세요)     
+```kotlin
+class CatItemAdapter : ListAdapter<CatModelItem, CatItemAdapter.CatViewHolder>(object :
+    DiffUtil.ItemCallback<CatModelItem>() {
+    override fun areItemsTheSame(oldItem: CatModelItem, newItem: CatModelItem) =
+        oldItem.id == newItem.id
 
+    override fun areContentsTheSame(oldItem: CatModelItem, newItem: CatModelItem) =
+        oldItem == newItem
+}) {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CatViewHolder {
+        val binding = ItemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return CatViewHolder(binding)
+    }
 
+    override fun onBindViewHolder(holder: CatViewHolder, position: Int) {
+        holder.bind(getItem(position))
+    }
 
-
+    inner class CatViewHolder(binding: ItemLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
+        private val imageView = binding.ivAlbum
+        fun bind(item: CatModelItem) {
+           // TODO: 고양이 사진 연결하기
+        }
+    }
+}
+```
+- 고양이 앨범을 출력할 앨범 Item_layout.xml을 layout 폴더 안에 추가해 주세요.    
+- ImageView의 id는 “iv_album”로 지어주세요.
+- ImageView에는 지난 과제에서 적용했던 round_background, clipToOutline, elevation, scaleType 등 다양한 속성들을 활용해 꾸며 주세요.
+- CatItemAdapter 안의 CatViewHolder의 bind 함수를 완성해 주세요.
+- Glide를 활용하여 imageView에 cat 이미지를 load해 주세요.
+- 다양한 transition effect도 활용해 보세요.
+#### [참조] by lazy
+- by lazy는 초기화를 필요한 순간까지 지연시키며, 이는 메모리 절약과 성능 최적화에 도움을 줍니다. 해당 속성은 처음 접근할 때 단 한 번만 초기화되고, 이후에는 재사용됩니다.
+      
+#### 4. RecyclerView와 Adapter를 연결해 보아요.
+- 기존의 imageView에 4개의 고양이 사진을 출력하는 코드는 삭제해 주세요.
+- MainActivity안에서 CatItemAdapter를 by lazy로 생성해 itemAdapter 변수에 담아 주세요.
+- MainActivity의 onCreate 메서드 안에서 binding.list의 adapter에 방금 만든 변수 itemAdapter를 연결해 주세요.
+- cat_button의 setOnClickListener 안에서 Retrofit을 통해 Image를 10개씩 받아오도록 num값을 수정해 주세요.
+      
+#### 5. 효율성을 위해 코루틴을 적용해 보세요.
+- Image를 서버에서 받아올 때 코루틴의 Dispachers.IO에서 작업을 수행할 수 있도록 withContext를 활용해 보세요.
+- 서버에서 받아온 이미지 리스트를 adapter의 submitList를 활용해 itemAdapter에 적용해 주세요.
 
 
 
