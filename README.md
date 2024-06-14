@@ -190,7 +190,7 @@ class CatItemAdapter : ListAdapter<CatModelItem, CatItemAdapter.CatViewHolder>(o
 - Image를 서버에서 받아올 때 코루틴의 Dispachers.IO에서 작업을 수행할 수 있도록 withContext를 활용해 보세요.
 - 서버에서 받아온 이미지 리스트를 adapter의 submitList를 활용해 itemAdapter에 적용해 주세요.
 
-#### 4주차 과제 완성 고양이 리스트 (서버에서 데이터 받아서 리스트에 뿌리기)
+#### 4주차 과제 완성 고양이 리스트 (서버에서 데이터 받아서 리사이클러뷰 에 뿌리기)
 ![2024-06-15 03;17;57](https://github.com/chihyeonwon/LoveCat/assets/58906858/4173c127-3bc9-47e1-b4a8-12c4e8ea0958)
 
 ## ** 참고자료 ** 
