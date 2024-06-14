@@ -16,48 +16,28 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
+    private val itemAdapter by lazy { CatItemAdapter() } // CatItemAdapter를 by lazy로 생성
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.list.adapter = itemAdapter
+
         with(binding) {
+
             catButton.setOnClickListener {
 
                 CoroutineScope(Dispatchers.Main).launch {
                     runCatching {
+                        // 10개의 고양이 사진 정보를 받아와 result 변수에 저장
                         val result =
-                            withContext(Dispatchers.IO) { RetrofitInstance.service.getImages(num = 4) }
+                            withContext(Dispatchers.IO) { RetrofitInstance.service.getImages(num = 10) }
 
-                        Glide.with(this@MainActivity).load(result[0].url).thumbnail(
-                            Glide.with(this@MainActivity)
-                                .load(R.drawable.loading)    // loading은 GIF 파일
-                        ).transition(
-                            withCrossFade()
-                        ).into(binding.ivAlbum1)
-                        Glide.with(this@MainActivity).load(result[1].url).thumbnail(
-                            Glide.with(this@MainActivity)
-                                .load(R.drawable.loading)    // loading은 GIF 파일
-                        ).transition(
-                            withCrossFade()
-                        ).into(binding.ivAlbum2)
-                        Glide.with(this@MainActivity).load(result[2].url).thumbnail(
-                            Glide.with(this@MainActivity)
-                                .load(R.drawable.loading)    // loading은 GIF 파일
-                        ).transition(
-                            withCrossFade()
-                        ).into(binding.ivAlbum3)
-                        Glide.with(this@MainActivity).load(result[3].url).thumbnail(
-                            Glide.with(this@MainActivity)
-                                .load(R.drawable.loading)    // loading은 GIF 파일
-                        ).transition(
-                            withCrossFade()
-                        ).into(binding.ivAlbum4)
 
                         Toast.makeText(
-                            this@MainActivity,
-                            "새로운 고양이 사진을 가져옵니다",
-                            Toast.LENGTH_SHORT
+                            this@MainActivity, "새로운 고양이 사진을 가져옵니다", Toast.LENGTH_SHORT
                         ).show()
                     }.onFailure {
                         Toast.makeText(
