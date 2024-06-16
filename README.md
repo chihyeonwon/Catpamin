@@ -1,4 +1,5 @@
 ## 구글 플레이스토어에서 냥파민 앱을 다운로드하세요!
+[냥파민 -고양이 사진첩 다운로드 링크](https://play.google.com/store/apps/details?id=com.wonchihyeon.catpamin&pcampaignid=web_share)
 ![image](https://github.com/chihyeonwon/Catpamin/assets/58906858/5d1baf3c-193d-4fc5-895d-6d139fed6d3d)
 
 ## 1,2주차
