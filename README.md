@@ -1,3 +1,6 @@
+## 구글 플레이스토어에서 냥파민 앱을 다운로드하세요!
+![image](https://github.com/chihyeonwon/Catpamin/assets/58906858/5d1baf3c-193d-4fc5-895d-6d139fed6d3d)
+
 ## 1,2주차
 ## 고양이 앨범을 꾸며 보아요.🐱‍👤 
 ![2024-06-04 17;41;00](https://github.com/chihyeonwon/LoveCat/assets/58906858/5f44242f-9a8a-49c6-b105-064a77a687df)
